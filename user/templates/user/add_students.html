@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+            background: linear-gradient(135deg,rgb(248, 248, 248) 0%,rgb(199, 201, 201) 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .glass-container {
+            background: rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border-radius: 20px;
+            border: 1.5px solid rgba(255, 255, 255, 0.25);
+            padding: 44px 36px;
+            max-width: 420px;
+            width: 100%;
+        }
+        h1 {
+            color: #222;
+            text-align: center;
+            margin-bottom: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        label {
+            color: #333;
+            font-weight: 500;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 14px;
+            margin-bottom: 18px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.35);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            font-size: 1rem;
+            outline: none;
+            transition: background 0.2s;
+        }
+        input:focus, select:focus, textarea:focus {
+            background: rgba(255,255,255,0.55);
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(124, 194, 191, 0.92);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(11,162,157,0.08);
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        button[type="submit"]:hover {
+            background: rgba(11, 162, 157, 1);
+            box-shadow: 0 4px 16px rgba(11,162,157,0.15);
+        }
+        .error {
+            color: #d8000c;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 8px;
+            padding: 8px 12px;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            box-shadow: 0 1px 4px rgba(216,0,12,0.04);
+        }
+    </style>
+
+    <div class="glass-container">
+        <h1>New Student</h1>
+
+        <form action="" method="post">
+            {% csrf_token %}
+
+            {% for field in form %}
+                {{ field.label_tag }}<br>
+                {{ field }}<br>
+                {% if field.errors %}
+                    <div class="error">{{ field.errors }}</div>
+                {% endif %}
+            {% endfor %}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>

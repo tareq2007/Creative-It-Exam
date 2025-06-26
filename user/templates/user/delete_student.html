@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="max-width: 400px; margin: 60px auto; background: #fff; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); padding: 32px 28px; text-align: center;">
+    <h1 style="color: #d9534f; margin-bottom: 18px; font-size: 2rem;">Delete Student</h1>
+    <p style="font-size: 1.1rem; color: #555; margin-bottom: 32px;">
+        Are you sure you want to delete <strong>"{{ student.name }}"</strong>?
+    </p>
+    <div style="display: flex; justify-content: center; gap: 16px;">
+        <a href="{% url 'home' %}" class="btn btn-secondary" style="padding: 10px 28px; border-radius: 6px; background: #f5f5f5; color: #333; border: 1px solid #ccc; text-decoration: none; font-weight: 500; transition: background 0.2s;">
+            Cancel
+        </a>
+        <form method="POST" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" style="padding: 10px 28px; border-radius: 6px; background: #d9534f; color: #fff; border: none; font-weight: 500; cursor: pointer; transition: background 0.2s;">
+                Confirm
+            </button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
