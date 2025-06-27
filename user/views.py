@@ -7,24 +7,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-def userLogin(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        try:
-            user = User.objects.get(username=username)
-        except:
-            messages.error(request, 'User does not exist!')
-            return redirect('login')
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            messages.success(request, 'Login successful!')
-            return redirect('home')
-    return render(request, 'user/login_register.html')
-
-
-
 def home(request):
     search = ''
     if request.GET.get('search'):
